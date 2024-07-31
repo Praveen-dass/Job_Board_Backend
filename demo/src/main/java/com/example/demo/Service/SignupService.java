@@ -1,7 +1,10 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Signup;
+import com.example.demo.Entity.UserSignUp;
 import com.example.demo.Repository.SignupRepo;
+import com.example.demo.Repository.UserSignupRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,9 @@ import java.util.Optional;
 public class SignupService {
     @Autowired
     private SignupRepo signRepo;
+
+    @Autowired
+    private UserSignupRepo userSignupRepo;
     public boolean postmethod(Signup sign)
     {
         try
@@ -47,4 +53,11 @@ public class SignupService {
         signRepo.deleteById(id);
     }
 
+    public void UserPost(UserSignUp userSignUp){
+        userSignupRepo.save(userSignUp);
+    }
+
+    public Optional<UserSignUp> getUser(String username){
+        return userSignupRepo.findById((username));
+    }
 }

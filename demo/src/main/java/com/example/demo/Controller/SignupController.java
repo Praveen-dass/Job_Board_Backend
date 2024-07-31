@@ -1,23 +1,26 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Signup;
+import com.example.demo.Entity.UserSignUp;
 import com.example.demo.Service.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 public class SignupController {
     @Autowired
     private SignupService signService;
-    @GetMapping("/get")
-    public List<Signup> getmethod()
-    {
-        return signService.list();
-    }
+
 
     @GetMapping("/admin/get/{id}")
     public Optional<Signup> getById(@PathVariable String id)
@@ -40,4 +43,16 @@ public class SignupController {
     {
         signService.deldata(id);
     }
+
+    @GetMapping("/user/get/{username}")
+    public Optional<UserSignUp> getMethodName(@PathVariable String username) {
+        return signService.getUser(username);
+    }
+
+    @PostMapping("/user/post")
+    public void postMethodName(@RequestBody UserSignUp userSignUp) {  
+        signService.UserPost(userSignUp);
+    }
+    
+    
 }
