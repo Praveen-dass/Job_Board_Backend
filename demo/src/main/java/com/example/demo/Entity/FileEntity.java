@@ -2,8 +2,6 @@ package com.example.demo.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 
 @Entity
 @Data
@@ -20,7 +18,6 @@ public class FileEntity {
     @Column(name = "file_type")
     private String fileType;
 
-
     @Column(name = "file_size")
     private Long fileSize;
 
@@ -29,4 +26,3 @@ public class FileEntity {
 
     // Getters and Setters
 }
-
