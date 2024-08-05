@@ -58,6 +58,6 @@ public class SignupService {
     }
 
     public Optional<UserSignUp> getUser(String username){
-        return userSignupRepo.findById((username));
+        return userSignupRepo.findById(username);
     }
 }
