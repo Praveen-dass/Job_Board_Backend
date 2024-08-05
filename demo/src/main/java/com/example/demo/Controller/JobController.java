@@ -55,7 +55,7 @@ public class JobController {
     }
 
 
-    @DeleteMapping("deleteJob/{id}")
+    @DeleteMapping("/deleteJob/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id) {
         String result = jobService.deleteUser(id);
         return new ResponseEntity<>(result,HttpStatus.OK);
