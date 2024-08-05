@@ -43,4 +43,7 @@ public class JobService {
         return "job deleted successfully";
     }
 
+    public List<Job> findByCompany(String companyname) {
+        return jobRepository.findByCompanyName(companyname);
+    }
 }

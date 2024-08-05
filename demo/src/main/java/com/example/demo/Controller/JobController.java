@@ -61,4 +61,9 @@ public class JobController {
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
+    @GetMapping("/getJob/{companyname}")
+    public List<Job> getJobsByCompanyName(@PathVariable String companyname) {
+        return jobService.findByCompany(companyname);
+    }
+
 }
