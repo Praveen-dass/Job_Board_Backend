@@ -40,7 +40,7 @@ public class JobController {
         return null;
     }
 
-    @PutMapping("updateJob/{id}")
+    @PutMapping("/updateJob/{id}")
     public String updateUser(@PathVariable int id, @RequestBody Job job) {
         return jobService.updateUser(id, job);
     }
