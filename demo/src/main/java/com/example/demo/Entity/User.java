@@ -20,6 +20,7 @@ public class User {
     private String mobilenumber;
     private String gender;
     private String age;
+    private String companyname;
 
     private String collegeName;
     private String collegeLocation;

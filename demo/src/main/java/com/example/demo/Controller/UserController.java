@@ -34,4 +34,9 @@ public class UserController {
         }
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
+    @GetMapping("/get/user/{companyname}")
+    public List<User> getUsersByCompany(@PathVariable String companyname) {
+        return userService.findByCompany(companyname);
+    }
 }

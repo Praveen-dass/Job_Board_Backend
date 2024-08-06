@@ -23,4 +23,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public List<User> findByCompany(String companyname) {
+        return userRepository.findByCompanyname(companyname);
+    }
 }

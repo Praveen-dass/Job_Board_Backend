@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.Entity.User;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.List;
 
+public interface UserRepository extends JpaRepository<User, Long> {
+    List<User> findByCompanyname(String companyname);
 }
