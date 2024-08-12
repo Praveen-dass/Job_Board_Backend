@@ -40,11 +40,24 @@ public class SignupService {
     }
     public Signup putmethod(Signup sign,String id)
     {
-        if(getId(id)!=null)
-        {
-            return signRepo.save(sign);
-        }
-        else{
+//        if(getId(id)!=null)
+//        {
+//            return signRepo.save(sign);
+//        }
+//        else{
+//            return null;
+//        }
+        Optional<Signup> existingSignup = signRepo.findById(id);
+        if (existingSignup.isPresent()) {
+            Signup updatedSignup = existingSignup.get();
+            // Update fields
+            updatedSignup.setFirstName(sign.getFirstName());
+            updatedSignup.setLastName(sign.getLastName());
+            updatedSignup.setCompanyname(sign.getCompanyname());
+            updatedSignup.setPassword(sign.getPassword());
+            updatedSignup.setEmail(sign.getEmail());
+            return signRepo.save(updatedSignup);
+        } else {
             return null;
         }
     }
