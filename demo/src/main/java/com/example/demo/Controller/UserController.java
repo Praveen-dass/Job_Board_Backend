@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.Job;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.Entity.User;
@@ -38,5 +39,10 @@ public class UserController {
     @GetMapping("/get/user/{companyname}")
     public List<User> getUsersByCompany(@PathVariable String companyname) {
         return userService.findByCompany(companyname);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id);
     }
 }

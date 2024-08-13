@@ -1,11 +1,15 @@
 package com.example.demo.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.Entity.EmailRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.Service.EmailService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class NotificationController {
 
     private final EmailService emailService;
@@ -26,5 +30,11 @@ public class NotificationController {
                 "Jobizz community";
         emailService.sendEmail(to, subject, message);
         return "Email sent successfully!";
+    }
+
+    @PostMapping("/send-email")
+    public ResponseEntity<String> sendEmail(@RequestBody EmailRequest emailRequest) {
+        emailService.sendEmail(emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getMessage());
+        return new ResponseEntity<>("Email sent successfully!", HttpStatus.OK);
     }
 }

@@ -15,6 +15,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public  String deleteUser(Long id) {
+        userRepository.deleteById(id);
+        return "user deleted successfully";
+    }
+
     public User postdetail(User user) {
         return userRepository.save(user);
     }
